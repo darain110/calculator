@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function NumberClick(num){
+            var number=document.getElementById("number")
+            number.value+=num;
+           
+        }
+        function CalculateClick(){
+            var number=document.getElementById("number");
+            try{
+            number.value=eval(number.value)
+            }catch(error){
+                alert("Invalid")
+                document.getElementById("number").value='';
+            }
+        }
+        function ClearClick(){
+            document.getElementById("number").value='';
+        }
+        function DeleteClick(){
+            var number=document.getElementById("number");
+            number.value=number.value.slice(0,-1)
+        }
+        function background(){
+            var head=document.querySelector("header");
+            color=parseInt(Math.random()*1000000);
+            head.style.backgroundColor="#"+color
+        }
+        function bodyload(){
+            setInterval(background,1000)
+        }
+    </script>
+</head>
+<body onload="bodyload()">
+<header class="d-flex justify-content-between text-white p-3">
+    <h3 class=" mt-3">Desgin By Using </h3>
+    <img src="whitelogo.png"width="100px "height="60px"class="rounded">
+</header>
+   <div id="container">
+    <section>
+        <h4 class="text-center mb-3">Calculator</h4>
+        <div>
+            <input type="text"class="txtbox"id="number">
+            <div>
+                <button onclick="NumberClick('7')">7</button>
+                <button onclick="NumberClick('8')">8</button>
+                <button onclick="NumberClick('9')">9</button>
+                <button onclick="DeleteClick()">Del</button>
+            </div>
+            <div>
+                <button onclick="NumberClick('4')">4</button>
+                <button onclick="NumberClick('5')">5</button>
+                <button onclick="NumberClick('6')">6</button>
+                <button onclick="NumberClick('-')">-</button>
+            </div>
+            <div>
+                <button onclick="NumberClick('1')">1</button>
+                <button onclick="NumberClick('2')">2</button>
+                <button onclick="NumberClick('3')">3</button>
+                <button onclick="NumberClick('/')">/</button>
+            </div>
+            <div>
+                <button onclick="NumberClick('0')">0</button>
+                <button onclick="NumberClick('00')">00</button>
+                <button onclick="NumberClick('.')">.</button>
+                <button onclick="NumberClick('*')">x</button>
+            </div>
+            <div>
+                <button onclick="ClearClick()">C</button>
+                <button onclick="CalculateClick()"class="button">=</button>
+                <button onclick="NumberClick('+')"class="button">+</button>
+            </div>
+        </div>
+
+    </section>
+   </div>
+</body>
+</html>
